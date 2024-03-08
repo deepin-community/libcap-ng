@@ -1,5 +1,5 @@
-/* capngswig.i --
- * Copyright 2009 Red Hat Inc.
+/* libdrop_ambient.c --
+ * Copyright 2020 Red Hat Inc.
  * All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -13,38 +13,19 @@
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program; see the file COPYING. If not, write to the
+ * along with this program; see the file COPYING.LIB. If not, write to the
  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
  * Boston, MA 02110-1335, USA.
  *
  * Authors:
- *   Steve Grubb <sgrubb@redhat.com>
+ *      Steve Grubb <sgrubb@redhat.com>
  */
 
-%module capng
-%{
-        #include "./capng.h"
-%}
+#include "config.h"
+#include <sys/prctl.h>
 
-#if defined(SWIGPYTHON)
-
-%varargs(16, signed capability = 0) capng_updatev;
-
-%except(python) {
-  $action
-  if (result < 0) {
-    PyErr_SetFromErrno(PyExc_OSError);
-    return NULL;
-  }
+void __attribute__ ((constructor)) init(void)
+{
+	prctl(PR_CAP_AMBIENT, PR_CAP_AMBIENT_CLEAR_ALL, 0, 0, 0);
 }
-#endif
-
-%define __signed__
-signed
-%enddef
-#define __attribute(X) /*nothing*/
-typedef unsigned __u32;
-#define __extension__ /*nothing*/
-%include "./caps.h"
-%include "./capng.h"
 

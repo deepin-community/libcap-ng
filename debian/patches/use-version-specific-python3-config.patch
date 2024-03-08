@@ -1,0 +1,28 @@
+From: Håvard F. Aasen <havard.f.aasen@pfft.no>
+Date: Sat, 23 Dec 2023 11:48:16 +0100
+Subject: Use version specific 'python3-config'
+
+Needed since we want to build for multiple versions of Python 3.
+
+Forwarded: not-needed
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bc37edb..b0d330c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -188,9 +188,9 @@ else
+ 		echo "pass --without-python3 to ./configure."
+ 		exit 1
+ 	fi
+-	PYTHON3_CFLAGS=`python3-config --cflags 2> /dev/null`
+-	PYTHON3_LIBS=`python3-config --libs 2> /dev/null`
+-	PYTHON3_INCLUDES=`python3-config --includes 2> /dev/null`
++	PYTHON3_CFLAGS=`$PYTHON3-config --cflags 2> /dev/null`
++	PYTHON3_LIBS=`$PYTHON3-config --libs 2> /dev/null`
++	PYTHON3_INCLUDES=`$PYTHON3-config --includes 2> /dev/null`
+ 	AC_SUBST([PYTHON3_PREFIX], ['${prefix}'])
+ 	PYTHON3_EXECDIR=`$PYTHON3 -c "import sysconfig; print(sysconfig.get_path('platlib'))"`
+ 	AC_SUBST(PYTHON3_CFLAGS)
