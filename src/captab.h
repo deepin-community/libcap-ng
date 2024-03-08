@@ -1,5 +1,5 @@
 /* captab.h --
- * Copyright 2009,2011-14 Red Hat Inc., Durham, North Carolina.
+ * Copyright 2009,2011-14,2020 Red Hat Inc.
  * All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -12,9 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; see the file COPYING.LIB. If not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+ * Boston, MA 02110-1335, USA.
  *
  * Authors:
  *      Steve Grubb <sgrubb@redhat.com>
@@ -63,14 +64,14 @@ _S(CAP_MAC_ADMIN,		"mac_admin"		)
 #ifdef CAP_SYSLOG
 _S(CAP_SYSLOG,			"syslog"		)
 #endif
-#ifdef CAP_WAKE_ALARM
-_S(CAP_WAKE_ALARM,		"wake_alarm"		)
-#endif
 #if defined(CAP_EPOLLWAKEUP) && defined(CAP_BLOCK_SUSPEND)
 #error "Both CAP_EPOLLWAKEUP and CAP_BLOCK_SUSPEND are defined"
 #endif
 #ifdef CAP_EPOLLWAKEUP
 _S(CAP_EPOLLWAKEUP,		"epollwakeup"		)
+#endif
+#ifdef CAP_WAKE_ALARM
+_S(CAP_WAKE_ALARM,              "wake_alarm"            )
 #endif
 #ifdef CAP_BLOCK_SUSPEND
 _S(CAP_BLOCK_SUSPEND,		"block_suspend"		)
@@ -78,4 +79,12 @@ _S(CAP_BLOCK_SUSPEND,		"block_suspend"		)
 #ifdef CAP_AUDIT_READ
 _S(CAP_AUDIT_READ,		"audit_read"		)
 #endif
-
+#ifdef CAP_PERFMON
+_S(CAP_PERFMON,                 "perfmon"               )
+#endif
+#ifdef CAP_BPF
+_S(CAP_BPF,                     "bpf"                   )
+#endif
+#ifdef CAP_CHECKPOINT_RESTORE
+_S(CAP_CHECKPOINT_RESTORE,	"checkpoint_restore")
+#endif
