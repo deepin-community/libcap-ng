@@ -1,3 +1,2 @@
-01_manpage_description.patch
-02_fix_armel_segfault_memset.patch
-03_fix_mask_dso_unloadable.patch
+use-version-specific-python3-config.patch
+remove-python-global-exception-handler-since-its-deprecat.patch

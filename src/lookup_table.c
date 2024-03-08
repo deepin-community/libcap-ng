@@ -1,5 +1,5 @@
-/* lookup_table.c -- 
- * Copyright 2009, 2013 Red Hat Inc., Durham, North Carolina.
+/* lookup_table.c --
+ * Copyright 2009, 2013 Red Hat Inc.
  * All Rights Reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -12,9 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; see the file COPYING.LIB. If not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+ * Boston, MA 02110-1335, USA.
  *
  * Authors:
  *      Steve Grubb <sgrubb@redhat.com>
@@ -25,10 +26,11 @@
 #include <linux/capability.h>
 #include <strings.h>
 #include <stdio.h>
+#include <stdlib.h>  // free
 
 
 #define hidden __attribute__ ((visibility ("hidden")))
-extern int last_cap hidden;
+extern unsigned int last_cap hidden;
 
 #undef cap_valid
 #define cap_valid(x) ((x) <= last_cap)
@@ -105,19 +107,23 @@ int capng_name_to_capability(const char *name)
                                  CAP_NG_CAPABILITY_NAMES, name);
 }
 
+static char *ptr2 = NULL;
 const char *capng_capability_to_name(unsigned int capability)
 {
-	char *ptr;
+	const char *ptr;
 
 	if (!cap_valid(capability))
 		return NULL;
 
 	ptr = capng_lookup_number(captab, captab_msgstr.str,
                                    CAP_NG_CAPABILITY_NAMES, capability);
-	if (ptr == NULL) // This leaks memory, but should almost never be used
-		if (asprintf(&ptr, "cap_%d", capability) < 0)
+	if (ptr == NULL) { // This leaks memory, but should almost never be used
+		free(ptr2);
+		if (asprintf(&ptr2, "cap_%u", capability) < 0)
 			ptr = NULL;
-
+		else
+			ptr = ptr2;
+	}
 	return ptr;
 }
 
