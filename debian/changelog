@@ -1,3 +1,9 @@
+libcap-ng (0.8.4-2deepin1) unstable; urgency=medium
+
+  * No source change upload against python 3.12.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 08 Jul 2024 09:51:03 +0200
+
 libcap-ng (0.8.4-2) unstable; urgency=medium
 
   * Add patch from upstream to fix ftbfs. Closes: #1063398
