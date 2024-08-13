@@ -1,8 +1,14 @@
-libcap-ng (0.8.4-2deepin1) unstable; urgency=medium
+libcap-ng (0.8.5-1) unstable; urgency=medium
 
-  * No source change upload against python 3.12.
+  * New upstream release.
+  * Patches:
+    - Refresh use-version-specific-python3-config.patch.
+    - Add patch from upstream to fix Python path when configuring.
+    - Drop remove-python-global-exception-handler-since-its-deprecat.patch,
+      included upstream.
+  * Update Standards-version to 4.7.0, no changes needed.
 
- -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 08 Jul 2024 09:51:03 +0200
+ -- Håvard F. Aasen <havard.f.aasen@pfft.no>  Wed, 17 Apr 2024 07:32:52 +0200
 
 libcap-ng (0.8.4-2) unstable; urgency=medium
 
