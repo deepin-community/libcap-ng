@@ -1,8 +1,34 @@
-libcap-ng (0.8.4-2deepin1) unstable; urgency=medium
+libcap-ng (0.8.5-4) unstable; urgency=medium
 
-  * No source change upload against python 3.12.
+  * Fix lintian warnings from autopkgtest.
 
- -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 08 Jul 2024 09:51:03 +0200
+ -- Håvard F. Aasen <havard.f.aasen@pfft.no>  Wed, 27 Nov 2024 21:46:55 +0100
+
+libcap-ng (0.8.5-3) unstable; urgency=medium
+
+  * Add upstream test-suites as autopkgtest.
+  * Remove d/libcap-ng-dev.dirs, no longer needed.
+
+ -- Håvard F. Aasen <havard.f.aasen@pfft.no>  Sun, 20 Oct 2024 09:26:34 +0200
+
+libcap-ng (0.8.5-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTBFS with nopython build profile. Closes: #1078857
+
+ -- Håvard F. Aasen <havard.f.aasen@pfft.no>  Sun, 18 Aug 2024 13:24:22 +0200
+
+libcap-ng (0.8.5-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Patches:
+    - Refresh use-version-specific-python3-config.patch.
+    - Add patch from upstream to fix Python path when configuring.
+    - Drop remove-python-global-exception-handler-since-its-deprecat.patch,
+      included upstream.
+  * Update Standards-version to 4.7.0, no changes needed.
+
+ -- Håvard F. Aasen <havard.f.aasen@pfft.no>  Wed, 17 Apr 2024 07:32:52 +0200
 
 libcap-ng (0.8.4-2) unstable; urgency=medium
 

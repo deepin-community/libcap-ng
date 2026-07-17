@@ -10,19 +10,19 @@ Forwarded: not-needed
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index bc37edb..b0d330c 100644
+index 1ee66bd..4ecf4e9 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -188,9 +188,9 @@ else
- 		echo "pass --without-python3 to ./configure."
- 		exit 1
- 	fi
+@@ -182,9 +182,9 @@ else
+ 	echo "Python3 bindings WILL be built"
+ 	use_python3=yes
+ 	AM_PATH_PYTHON([3.1],, [:])
 -	PYTHON3_CFLAGS=`python3-config --cflags 2> /dev/null`
 -	PYTHON3_LIBS=`python3-config --libs 2> /dev/null`
 -	PYTHON3_INCLUDES=`python3-config --includes 2> /dev/null`
-+	PYTHON3_CFLAGS=`$PYTHON3-config --cflags 2> /dev/null`
-+	PYTHON3_LIBS=`$PYTHON3-config --libs 2> /dev/null`
-+	PYTHON3_INCLUDES=`$PYTHON3-config --includes 2> /dev/null`
- 	AC_SUBST([PYTHON3_PREFIX], ['${prefix}'])
- 	PYTHON3_EXECDIR=`$PYTHON3 -c "import sysconfig; print(sysconfig.get_path('platlib'))"`
++	PYTHON3_CFLAGS=`$PYTHON-config --cflags 2> /dev/null`
++	PYTHON3_LIBS=`$PYTHON-config --libs 2> /dev/null`
++	PYTHON3_INCLUDES=`$PYTHON-config --includes 2> /dev/null`
  	AC_SUBST(PYTHON3_CFLAGS)
+ 	AC_SUBST(PYTHON3_LIBS)
+ 	AC_SUBST(PYTHON3_INCLUDES)
