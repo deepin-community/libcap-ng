@@ -1,9 +1,3 @@
-libcap-ng (0.8.5-5) unstable; urgency=medium
-
-  * Rebuild with LTO enabled (dpkg vendor feature optimize/lto).
-
- -- tunaichao <tunaichao@uniontech.com>  Fri, 11 Sep 2026 15:44:40 +0800
-
 libcap-ng (0.8.5-4) unstable; urgency=medium
 
   * Fix lintian warnings from autopkgtest.
